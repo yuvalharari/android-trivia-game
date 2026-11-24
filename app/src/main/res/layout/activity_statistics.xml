@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Statistics"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="6"
+                android:layout_marginBottom="32dp"/>
+
+            <!-- Stats overview -->
+            <TextView
+                android:id="@+id/tvLastScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Game: -"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="6"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:id="@+id/tvStatsHighScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Score: -"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="6"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:id="@+id/tvTotalGames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Games: -"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="6"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:id="@+id/tvSuccessRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Success Rate: -"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="6"
+                android:layout_marginBottom="32dp"/>
+
+            <Button
+                android:id="@+id/btnHistory"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Show History"
+                android:textColor="#29B6F6"
+                android:backgroundTint="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Calendar container, hidden by default -->
+            <LinearLayout
+                android:id="@+id/calendarContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <CalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Selected day info -->
+                <TextView
+                    android:id="@+id/tvCalendarInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="6"
+                    android:layout_marginBottom="24dp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnBackToMenu"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Back to Menu"
+                android:textColor="#29B6F6"
+                android:backgroundTint="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

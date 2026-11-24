@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Clear role and sign out
                 SharedPreferences prefs = getSharedPreferences("TriviaPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.remove("role");

@@ -29,6 +29,7 @@ public class SplashActivity extends AppCompatActivity {
     Handler handler = new Handler();
     int progress = 0;
 
+    // Flags to coordinate splash timer and auth check
     boolean splashDone = false;
     boolean authDone = false;
     String resolvedRole = null;
@@ -46,6 +47,7 @@ public class SplashActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         loadingText = findViewById(R.id.loadingText);
 
+        // Pulse animation on logo
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(logo, "scaleX", 1f, 1.3f, 1f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(logo, "scaleY", 1f, 1.3f, 1f);
         scaleX.setDuration(800);
@@ -57,6 +59,7 @@ public class SplashActivity extends AppCompatActivity {
         set.play(scaleX).with(scaleY);
         set.start();
 
+        // Progress bar updates every 30ms to reach 100% in 3 seconds
         Runnable progressRunnable = new Runnable() {
             @Override
             public void run() {
@@ -70,6 +73,7 @@ public class SplashActivity extends AppCompatActivity {
         };
         handler.post(progressRunnable);
 
+        // Auth check starts immediately while splash is showing
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
@@ -95,6 +99,7 @@ public class SplashActivity extends AppCompatActivity {
             authDone = true;
         }
 
+        // Minimum 3 second splash display
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -104,6 +109,7 @@ public class SplashActivity extends AppCompatActivity {
         }, 3000);
     }
 
+    // Navigate only when both splash timer and auth check are complete
     void tryNavigate() {
         if (!splashDone || !authDone) return;
 
@@ -130,6 +136,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // Cancel pending handler callbacks
         handler.removeCallbacksAndMessages(null);
     }
 }

@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                // Authenticate with Firebase
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
@@ -113,11 +114,13 @@ public class LoginActivity extends AppCompatActivity {
                         String role = snapshot.getValue(String.class);
                         if (role == null) role = "user";
 
+                        // Save role to SharedPreferences
                         SharedPreferences prefs = getSharedPreferences("TriviaPrefs", MODE_PRIVATE);
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putString("role", role);
                         editor.apply();
 
+                        // Show role-based welcome toast
                         if (showToast) {
                             if (role.equals("admin")) {
                                 Toast.makeText(LoginActivity.this,

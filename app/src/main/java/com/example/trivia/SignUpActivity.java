@@ -84,6 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
+                // Check if username already exists
                 mDatabase.child("users").orderByChild("username")
                         .equalTo(username)
                         .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -123,6 +124,7 @@ public class SignUpActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         String userId = mAuth.getCurrentUser().getUid();
 
+                        // Save new user to Firebase with default role
                         UserModel user = new UserModel(username, email, "user");
                         mDatabase.child("users").child(userId).setValue(user);
 
